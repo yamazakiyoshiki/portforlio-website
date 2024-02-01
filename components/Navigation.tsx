@@ -1,31 +1,31 @@
-"use client"
-import { NavLinks } from '@/constants'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-import Transition from './Transition'
+"use client";
+import { NavLinks } from "@/constants";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import Transition from "./Transition";
 
 const Navigation = () => {
-  const [isRouting, setIsRouting] = useState(false)
-  const path = usePathname()
-  const [prevPath, setPrevPath] = useState("/")
+  const [isRouting, setIsRouting] = useState(false);
+  const path = usePathname();
+  const [prevPath, setPrevPath] = useState("/");
 
   useEffect(() => {
-    if(prevPath !== path) {
-          setIsRouting(true);
+    if (prevPath !== path) {
+      setIsRouting(true);
     }
-  }, [path, prevPath])
+  }, [path, prevPath]);
 
   useEffect(() => {
-    if(isRouting) {
+    if (isRouting) {
       setPrevPath(path);
       const timeout = setTimeout(() => {
-        setIsRouting(false)
-      }, 1200)
+        setIsRouting(false);
+      }, 1200);
 
-        return() => clearTimeout(timeout)
+      return () => clearTimeout(timeout);
     }
-  }, [isRouting])
+  }, [isRouting]);
   return (
     <div
       style={{ left: "20%" }}
@@ -43,7 +43,7 @@ const Navigation = () => {
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
